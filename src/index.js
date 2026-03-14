@@ -84,15 +84,26 @@ async function createNextStarter(projectName) {
   }
   console.log("  \u2713 Cleaning up");
 
-  // Step 3: Copy .env.example → .env
+  // Step 3: Prompt for site name
+  const siteName = (await prompt("? Site name? (e.g. My App) ")).trim() || projectName;
+
+  // Step 4: Copy .env.example → .env and apply site name
   const envExample = path.join(targetDir, ".env.example");
   const envTarget = path.join(targetDir, ".env");
   if (fs.existsSync(envExample)) {
     fs.copyFileSync(envExample, envTarget);
   }
+  if (fs.existsSync(envTarget)) {
+    let envContent = fs.readFileSync(envTarget, "utf8");
+    envContent = envContent.replace(
+      /^(NEXT_PUBLIC_SITE_NAME=).*$/m,
+      `$1${siteName}`,
+    );
+    fs.writeFileSync(envTarget, envContent);
+  }
   console.log("  \u2713 Setting up .env");
 
-  // Step 4: Rewrite package.json
+  // Step 5: Rewrite package.json
   const pkgPath = path.join(targetDir, "package.json");
   if (fs.existsSync(pkgPath)) {
     const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
@@ -102,7 +113,7 @@ async function createNextStarter(projectName) {
   }
   console.log("  \u2713 Updating package.json");
 
-  // Step 5: Prompt to install dependencies
+  // Step 6: Prompt to install dependencies
   const answer = await prompt("\n? Install dependencies now? (Y/n) ");
   const shouldInstall = answer.trim().toLowerCase() !== "n";
 
@@ -116,7 +127,7 @@ async function createNextStarter(projectName) {
     }
   }
 
-  // Step 6: Print next steps
+  // Step 7: Print next steps
   console.log("\nDone! Your project is ready.\n");
   console.log(`  cd ${projectName}`);
   if (!shouldInstall) {
