@@ -1,0 +1,16 @@
+{
+  "bin": {
+    "create-nextstarter": "bin/create-nextstarter.js"
+  },
+  "description": "Create a new project from the NextStarter boilerplate",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ],
+  "license": "MIT",
+  "name": "create-nextstarter",
+  "version": "1.0.0"
+}
