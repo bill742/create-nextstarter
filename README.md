@@ -1,6 +1,6 @@
 # create-nextstarter
 
-Scaffold a new [NextStarter](https://github.com/bill742/nextstarter) project with a single command.
+Scaffold a new Next.js project based on the [NextStarter](https://github.com/bill742/nextstarter) boilerplate with a single command.
 
 ## Usage
 
