@@ -13,8 +13,8 @@ const args = process.argv.slice(2);
 const projectName = args[0];
 
 if (!projectName || projectName === "--help" || projectName === "-h") {
-  console.log("Usage: create-nextstarter <project-name>");
-  console.log("Example: npx create-nextstarter my-project");
+  console.log("Usage: @bill742/create-nextstarter <project-name>");
+  console.log("Example: npx @bill742/create-nextstarter my-project");
   process.exit(projectName ? 0 : 1);
 }
 

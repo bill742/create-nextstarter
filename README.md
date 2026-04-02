@@ -5,7 +5,7 @@ Scaffold a new Next.js project based on the [NextStarter](https://github.com/bil
 ## Usage
 
 ```bash
-npx create-nextstarter my-project
+npx @bill742/create-nextstarter my-project
 cd my-project
 npm run dev
 ```
