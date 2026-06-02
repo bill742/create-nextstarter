@@ -5,6 +5,13 @@ const readline = require("node:readline");
 
 const TEMPLATE_REPO = "https://github.com/bill742/nextstarter.git";
 
+const PM_COMMANDS = {
+  npm: "npm install",
+  pnpm: "pnpm install",
+  bun: "bun install",
+  yarn: "yarn",
+};
+
 const CLEANUP_PATHS = [
   ".git",
   "node_modules",
@@ -114,15 +121,19 @@ async function createNextStarter(projectName) {
   console.log("  \u2713 Updating package.json");
 
   // Step 6: Prompt to install dependencies
-  const answer = await prompt("\n? Install dependencies now? (Y/n) ");
-  const shouldInstall = answer.trim().toLowerCase() !== "n";
+  const pmAnswer = (await prompt("\n? Install dependencies? [npm] / pnpm / bun / yarn / n (skip): ")).trim().toLowerCase();
+  const pm = pmAnswer === "" ? "npm" : pmAnswer;
 
-  if (shouldInstall) {
+  if (pm !== "n") {
+    if (!(pm in PM_COMMANDS)) {
+      console.warn(`  Unrecognized package manager "${pm}", falling back to npm.`);
+    }
+    const cmd = PM_COMMANDS[pm] ?? PM_COMMANDS.npm;
     try {
-      execSync("npm install", { cwd: targetDir, stdio: "inherit" });
+      execSync(cmd, { cwd: targetDir, stdio: "inherit" });
       console.log("\n  \u2713 Dependencies installed");
     } catch (err) {
-      console.error("Error: npm install failed.");
+      console.error(`Error: ${cmd} failed.`);
       process.exit(1);
     }
   }
@@ -130,10 +141,11 @@ async function createNextStarter(projectName) {
   // Step 7: Print next steps
   console.log("\nDone! Your project is ready.\n");
   console.log(`  cd ${projectName}`);
-  if (!shouldInstall) {
-    console.log("  npm install");
+  if (pm === "n") {
+    console.log(`  ${PM_COMMANDS.npm}`);
   }
-  console.log("  npm run dev\n");
+  const runCmd = pm === "bun" ? "bun dev" : pm === "pnpm" ? "pnpm dev" : pm === "yarn" ? "yarn dev" : "npm run dev";
+  console.log(`  ${runCmd}\n`);
   console.log(
     "Edit .env to set NEXT_PUBLIC_SITE_URL and NEXT_PUBLIC_SITE_NAME before deploying.",
   );

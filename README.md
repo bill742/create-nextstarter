@@ -10,13 +10,15 @@ cd my-project
 npm run dev
 ```
 
+When prompted, choose your preferred package manager: **npm** (default), **pnpm**, **bun**, or **yarn**. Enter `n` to skip installation.
+
 ## What it does
 
 1. Clones the NextStarter template
 2. Cleans up template-only files (`.git`, `CLAUDE.md`, `CHANGELOG.md`, etc.)
 3. Copies `.env.example` → `.env`
 4. Sets the project `name` and `version` in `package.json`
-5. Optionally runs `npm install`
+5. Optionally installs dependencies with your choice of npm, pnpm, bun, or yarn
 
 ## Requirements
 
