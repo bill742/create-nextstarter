@@ -25,7 +25,7 @@ npx . my-test-project
 Two files contain all the logic:
 
 - **`bin/create-nextstarter.js`** — CLI entry point. Validates Node.js ≥18, parses `--help`/`--version` flags, extracts the project name from `argv`, then calls `createNextStarter()`.
-- **`src/index.js`** — Core orchestration. Executes a linear 7-step workflow: validate name → check for conflicts → `git clone --depth=1` the template → remove template-only files → prompt for site name → write `.env` from `.env.example` → update `package.json` → optionally run `npm install`.
+- **`src/index.js`** — Core orchestration. Executes a linear 7-step workflow: validate name → check for conflicts → `git clone --depth=1` the template → remove template-only files → prompt for site name → write `.env` from `.env.example` → update `package.json` → prompt for package manager (npm/pnpm/bun/yarn) and optionally install dependencies.
 
 The tool uses only Node.js built-ins (`fs`, `path`, `child_process`, `readline`). Git must be available on `PATH` at runtime.
 
