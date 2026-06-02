@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0](https://github.com/bill742/create-nextstarter/compare/create-nextstarter-v1.1.1...create-nextstarter-v1.2.0) (2026-06-02)
+
+
+### Added
+
+* add package manager selection (npm/pnpm/bun/yarn) ([f9144c8](https://github.com/bill742/create-nextstarter/commit/f9144c84454f9cd055b0893a74a81beb80c0dabb))
+* add package manager selection (npm/pnpm/bun/yarn) ([212eb35](https://github.com/bill742/create-nextstarter/commit/212eb3586d2340a50c7777234e4ddea6c4c20c6f))
+* add package manager selection (npm/pnpm/bun/yarn) ([d851a71](https://github.com/bill742/create-nextstarter/commit/d851a713bd54c59e95b06e3d0114a36507d3d33c))
+
 ## [1.1.1](https://github.com/bill742/create-nextstarter/compare/create-nextstarter-v1.1.0...create-nextstarter-v1.1.1) (2026-04-01)
 
 
