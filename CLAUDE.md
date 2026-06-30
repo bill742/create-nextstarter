@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Project Does
 
-`create-nextstarter` is a CLI scaffolding tool (zero external dependencies) that clones the [NextStarter](https://github.com/bill742/nextstarter) template and configures it for a new project. Published as `@bill742/create-nextstarter` and invoked via `npx create-nextstarter <project-name>`.
+`create-nextstarter` is a CLI scaffolding tool (zero external dependencies) that clones the [NextStarter Lite](https://github.com/bill742/nextstarter-lite) template and configures it for a new project. Published as `@bill742/create-nextstarter` and invoked via `npx create-nextstarter <project-name>`.
 
 ## Running / Testing
 
@@ -31,4 +31,4 @@ The tool uses only Node.js built-ins (`fs`, `path`, `child_process`, `readline`)
 
 ## Template Source
 
-The cloned template is `https://github.com/bill742/nextstarter.git`. Files stripped during scaffolding: `.git`, `node_modules`, `.next`, `.env`, `.skills`, `CLAUDE.md`, `CHANGELOG.md`, `playwright-report`, `test-results`, `package-lock.json`.
+The cloned template is `https://github.com/bill742/nextstarter-lite.git`. Files stripped during scaffolding: `.git`, `node_modules`, `.next`, `.env`, `.skills`, `CLAUDE.md`, `CHANGELOG.md`, `playwright-report`, `test-results`, `package-lock.json`.

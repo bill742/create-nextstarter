@@ -3,7 +3,7 @@ const path = require("node:path");
 const { execSync } = require("node:child_process");
 const readline = require("node:readline");
 
-const TEMPLATE_REPO = "https://github.com/bill742/nextstarter.git";
+const TEMPLATE_REPO = "https://github.com/bill742/nextstarter-lite.git";
 
 const PM_COMMANDS = {
   npm: "npm install",
