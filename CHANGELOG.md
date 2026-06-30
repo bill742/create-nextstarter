@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0](https://github.com/bill742/create-nextstarter/compare/create-nextstarter-v1.2.0...create-nextstarter-v1.3.0) (2026-06-30)
+
+
+### Added
+
+* clone nextstarter-lite template instead of nextstarter ([dcee08b](https://github.com/bill742/create-nextstarter/commit/dcee08b1523893d42b9b5ae1ad37c000b191da3e))
+* clone nextstarter-lite template instead of nextstarter ([08964ea](https://github.com/bill742/create-nextstarter/commit/08964ea4d0be08c31ab720578ede133b7141dda5))
+
 ## [1.2.0](https://github.com/bill742/create-nextstarter/compare/create-nextstarter-v1.1.1...create-nextstarter-v1.2.0) (2026-06-02)
 
 
