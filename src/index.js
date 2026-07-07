@@ -133,8 +133,20 @@ async function createNextStarter(projectName) {
       execSync(cmd, { cwd: targetDir, stdio: "inherit" });
       console.log("\n  \u2713 Dependencies installed");
     } catch (err) {
-      console.error(`Error: ${cmd} failed.`);
-      process.exit(1);
+      // pnpm (10+) blocks dependency build scripts by default and exits
+      // non-zero. Packages are still installed on disk \u2014 only native build
+      // steps (e.g. sharp, unrs-resolver) are deferred \u2014 so treat this as a
+      // warning rather than a fatal error and point the user at approve-builds.
+      if (pm === "pnpm") {
+        console.warn(
+          "\n  \u26a0 pnpm reported an error (see output above)." +
+            "\n    If this was blocked build scripts, approve them inside the project:" +
+            `\n      cd ${projectName} && pnpm approve-builds`
+        );
+      } else {
+        console.error(`Error: ${cmd} failed.`);
+        process.exit(1);
+      }
     }
   }
 
