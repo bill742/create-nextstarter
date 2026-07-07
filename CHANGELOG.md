@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1](https://github.com/bill742/create-nextstarter/compare/create-nextstarter-v1.3.0...create-nextstarter-v1.3.1) (2026-07-07)
+
+
+### Fixed
+
+* don't fail install when pnpm defers dependency build scripts ([5e8b52e](https://github.com/bill742/create-nextstarter/commit/5e8b52e85347adb9f80fe78628ad622081ba9e56))
+* don't fail install when pnpm defers dependency build scripts ([4280974](https://github.com/bill742/create-nextstarter/commit/4280974150007c35458be71c6e0098828b2af6c1))
+
 ## [1.3.0](https://github.com/bill742/create-nextstarter/compare/create-nextstarter-v1.2.0...create-nextstarter-v1.3.0) (2026-06-30)
 
 
