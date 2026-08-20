@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.2](https://github.com/bill742/create-nextstarter/compare/create-nextstarter-v1.3.1...create-nextstarter-v1.3.2) (2026-08-20)
+
+
+### Changed
+
+* explain free vs. paid tiers in the README ([baff28f](https://github.com/bill742/create-nextstarter/commit/baff28f01d7e3ff25e5344d5557af17e2c7cb8c1))
+* explain free vs. paid tiers in the README ([4532574](https://github.com/bill742/create-nextstarter/commit/45325748b45901a8a03a91d79967d3939b454fcc))
+
 ## [1.3.1](https://github.com/bill742/create-nextstarter/compare/create-nextstarter-v1.3.0...create-nextstarter-v1.3.1) (2026-07-07)
 
 
