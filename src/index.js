@@ -23,6 +23,19 @@ const CLEANUP_PATHS = [
   "playwright-report",
   "test-results",
   "package-lock.json",
+  // The template repo doubles as the NextStarter marketing site. These are its
+  // sales surface, not starter functionality, so a new project should not
+  // inherit them. Everything that references them is gated on
+  // NEXT_PUBLIC_PRO_URL (see src/lib/upsell.ts), which the scaffolded .env
+  // leaves blank — so removing the files cannot break the build or leave a
+  // dangling link.
+  "src/app/pro",
+  "src/app/thanks",
+  "src/components/pro",
+  "src/lib/faq.ts",
+  "tests/pro-page.spec.ts",
+  "tests/thanks-page.spec.ts",
+  "scripts/checkout-smoke.mjs",
 ];
 
 /**
@@ -116,6 +129,9 @@ async function createNextStarter(projectName) {
     const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
     pkg.name = projectName;
     pkg.version = "0.1.0";
+    // Its script file is removed with the rest of the marketing surface above,
+    // so leaving the entry behind would only dangle.
+    delete pkg.scripts?.["test:checkout"];
     fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
   }
   console.log("  \u2713 Updating package.json");
