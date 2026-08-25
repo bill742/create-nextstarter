@@ -140,6 +140,16 @@ async function createNextStarter(projectName) {
   const pmAnswer = (await prompt("\n? Install dependencies? [npm] / pnpm / bun / yarn / n (skip): ")).trim().toLowerCase();
   const pm = pmAnswer === "" ? "npm" : pmAnswer;
 
+  // pnpm-workspace.yaml holds pnpm-only settings: the native-build allowlist
+  // for sharp/unrs-resolver, and a minimum release age for supply-chain
+  // hardening. npm, bun, and yarn all ignore it, so leaving it behind only
+  // plants a confusing config file in a project that will never read it.
+  // Kept when the user picks pnpm, and also when they skip install ("n") or
+  // type something unrecognized, since we cannot know what they will run later.
+  if (pm === "npm" || pm === "bun" || pm === "yarn") {
+    removePath(path.join(targetDir, "pnpm-workspace.yaml"));
+  }
+
   if (pm !== "n") {
     if (!(pm in PM_COMMANDS)) {
       console.warn(`  Unrecognized package manager "${pm}", falling back to npm.`);
