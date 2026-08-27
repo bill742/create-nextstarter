@@ -23,6 +23,19 @@ const CLEANUP_PATHS = [
   "playwright-report",
   "test-results",
   "package-lock.json",
+  // The template repo doubles as the NextStarter marketing site. These are its
+  // sales surface, not starter functionality, so a new project should not
+  // inherit them. Everything that references them is gated on
+  // NEXT_PUBLIC_PRO_URL (see src/lib/upsell.ts), which the scaffolded .env
+  // leaves blank — so removing the files cannot break the build or leave a
+  // dangling link.
+  "src/app/pro",
+  "src/app/thanks",
+  "src/components/pro",
+  "src/lib/faq.ts",
+  "tests/pro-page.spec.ts",
+  "tests/thanks-page.spec.ts",
+  "scripts/checkout-smoke.mjs",
 ];
 
 /**
@@ -116,6 +129,9 @@ async function createNextStarter(projectName) {
     const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
     pkg.name = projectName;
     pkg.version = "0.1.0";
+    // Its script file is removed with the rest of the marketing surface above,
+    // so leaving the entry behind would only dangle.
+    delete pkg.scripts?.["test:checkout"];
     fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
   }
   console.log("  \u2713 Updating package.json");
@@ -123,6 +139,16 @@ async function createNextStarter(projectName) {
   // Step 6: Prompt to install dependencies
   const pmAnswer = (await prompt("\n? Install dependencies? [npm] / pnpm / bun / yarn / n (skip): ")).trim().toLowerCase();
   const pm = pmAnswer === "" ? "npm" : pmAnswer;
+
+  // pnpm-workspace.yaml holds pnpm-only settings: the native-build allowlist
+  // for sharp/unrs-resolver, and a minimum release age for supply-chain
+  // hardening. npm, bun, and yarn all ignore it, so leaving it behind only
+  // plants a confusing config file in a project that will never read it.
+  // Kept when the user picks pnpm, and also when they skip install ("n") or
+  // type something unrecognized, since we cannot know what they will run later.
+  if (pm === "npm" || pm === "bun" || pm === "yarn") {
+    removePath(path.join(targetDir, "pnpm-workspace.yaml"));
+  }
 
   if (pm !== "n") {
     if (!(pm in PM_COMMANDS)) {
