@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0](https://github.com/bill742/create-nextstarter/compare/create-nextstarter-v1.3.2...create-nextstarter-v1.4.0) (2026-10-02)
+
+
+### Added
+
+* choose a blank or full starting point when scaffolding ([b1f3445](https://github.com/bill742/create-nextstarter/commit/b1f34455cc6bc64a3018d1b1b473e0b3d9e70c3c))
+* choose a blank or full starting point when scaffolding ([0c481ad](https://github.com/bill742/create-nextstarter/commit/0c481add77539a4137539669e3c906021586bf60))
+
 ## [1.3.2](https://github.com/bill742/create-nextstarter/compare/create-nextstarter-v1.3.1...create-nextstarter-v1.3.2) (2026-08-20)
 
 
